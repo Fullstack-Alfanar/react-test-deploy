@@ -1,22 +1,24 @@
-import logo from './logo.svg';
+// components
+// import Last from './components/Lastname/LastName';
+// import First from './components/Firstname/Firstname';
+// import FormApp from "./components/FormApp/FormApp";
+// import CounterTicket from './components/Counter/CounterTicket';
+import Crypto from './components/Crypto/Crypto';
+
+// Images
+// import npm from "./assets/images/npm.png"
+
+// Style
 import './App.css';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <div>
+      <Crypto/>
+      </div>
       </header>
     </div>
   );
