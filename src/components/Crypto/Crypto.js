@@ -1,23 +1,37 @@
 
-import {useState} from "react"
-function Crypto()
-{
-    const [data,setData] = useState("");
+import { useState, useEffect } from "react"
+import { axios } from 'axios'
+import Table from "../Table/table";
+function Crypto() {
+    const [data, setData] = useState([]);
     const [load, setLoad] = useState(false);
-    // const fetchfunction = useEffect(()=>{
 
-    // })
-    const CallData= async ()=>{
-        const dataCrypto = await fetch(data).then(res=>res.json()).then(perint=>{console.log(perint); setLoad(true);}).catch(err=>{console.log(err);setLoad(false);})
-        
-        // const json = await dataCrypto.json();
-        console.log(dataCrypto);
-    }
-    return(
+    useEffect(() => {
+        const CallData = async () => {
+            await fetch('https://api2.binance.com/api/v3/ticker/24hr').then(res=>res.json()).then(crypto=>setData(...data,crypto)).catch(err=>console.log(err));
+            await setLoad(true);
+            await console.log(data);
+        }
+        CallData();
+    },[])
+
+    // const getdata = async () => {
+    //     let api = await fetch('https://api2.binance.com/api/v3/ticker/24hr');
+    //     let json = await api.json();
+    //     setData(json)// this is not working we will see now !!!
+    //     setLoad(true);
+    //     console.log(data);
+    // }
+
+    return (
         <div>
-            <input type="text" name="" id="" onChange={e=>{setData(e.target.value)}}/>
-            <button onClick={CallData}>Call</button>
-            <h1>{load? "data":"loading..."}</h1>
+            {/* <input type="text" name="" id="" onChange={e => { setData(e.target.value) }} /> */}
+            {/* <button onClick={getdata}>Call</button> */}
+             {load ? 
+             <Table Tabledata={data}/> 
+             : "loading..."
+             }
+            
         </div>
     )
 }
